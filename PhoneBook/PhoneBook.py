@@ -45,7 +45,7 @@ def delete_contact():
         contact_found = False
         for line in lines:
             contact = line.strip().split(', ')
-            if (second_name not in contact[0]) or (first_name not in contact[1]):
+            if not ((second_name in contact[0]) and (first_name in contact[1])):
                 f.write(line)
             else:
                 contact_found = True
