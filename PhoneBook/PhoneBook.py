@@ -53,3 +53,41 @@ def delete_contact():
             print("Контакт удален")
         else:
             print("Контакт не найден")
+
+
+def delete_contact():
+    second_name  = input("Введите удаляемое фамилию: ") 
+    first_name = input("Введите удаляемое имя: ")    
+    with open('file.txt','r') as f:
+        lines = f.readlines()
+    with open('file.txt','w') as f:
+        contact_found = False
+        for line in lines:
+            contact = line.strip().split(', ')
+            if not ((second_name in contact[0]) and (first_name in contact[1])):
+                f.write(line)
+            else:
+                contact_found = True
+        if contact_found:
+            print("Контакт удален")
+        else:
+            print("Контакт не найден")
+
+def replace_contact():
+    second_name  = input("Введите искомую фамилию: ") 
+    first_name = input("Введите искомое имя: ") 
+    phone = input("Введите новый номер: ") 
+    with open('file.txt','r') as f:
+        lines = f.readlines()
+    with open('file.txt','w') as f:
+        contact_found = False
+        for line in lines:
+            contact = line.strip().split(', ')
+            if not ((second_name in contact[0]) and (first_name in contact[1])):
+                f.write(f'{second_name}, {first_name}, {phone}')
+            else:
+                contact_found = True
+        if contact_found:
+            print("Контакт изменен")
+        else:
+            print("Контакт не найден")
